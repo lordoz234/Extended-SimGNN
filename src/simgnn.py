@@ -6,7 +6,7 @@ from tqdm import tqdm, trange
 from scipy.stats import spearmanr, kendalltau
 
 from layers import AttentionModule, TensorNetworkModule, DiffPool
-from utils import calculate_ranking_correlation, calculate_prec_at_k, gen_pairs
+from utils import calculate_ranking_correlation, calculate_prec_at_k, gen_pairs, gen_synth_data
 
 from torch_geometric.nn import GCNConv, GINConv
 from torch_geometric.data import DataLoader, Batch
@@ -252,7 +252,7 @@ class SimGNNTrainer(object):
         self.real_data_size = self.nged_matrix.size(0)
 
         if self.args.synth:
-            self.synth_data_1, self.synth_data_2, _, synth_nged_matrix = gen_synth_data(500, 50, 190, 0.5, 0, 3)
+            self.synth_data_1, self.synth_data_2, _, synth_nged_matrix = gen_synth_data(100, 50, 190, 0.5, 0, 3)
             #self.synth_data_1, self.synth_data_2, _, synth_nged_matrix = gen_pairs(
             #    self.training_graphs.shuffle()[:500], 0, 3
             #)
