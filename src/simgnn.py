@@ -252,10 +252,10 @@ class SimGNNTrainer(object):
         self.real_data_size = self.nged_matrix.size(0)
 
         if self.args.synth:
-            self.synth_data_1, self.synth_data_2, _, synth_nged_matrix = gen_synth_data(100, 50, 190, 0.5, 0, 3)
-            #self.synth_data_1, self.synth_data_2, _, synth_nged_matrix = gen_pairs(
-            #    self.training_graphs.shuffle()[:500], 0, 3
-            #)
+            #self.synth_data_1, self.synth_data_2, _, synth_nged_matrix = gen_synth_data(100, 50, 190, 0.5, 0, 3)
+            self.synth_data_1, self.synth_data_2, _, synth_nged_matrix = gen_pairs(
+                self.training_graphs.shuffle()[:500], 0, 3
+            )
 
             real_data_size = self.nged_matrix.size(0)
             synth_data_size = synth_nged_matrix.size(0)
